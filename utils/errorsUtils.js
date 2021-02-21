@@ -1,18 +1,14 @@
 // gestion des erreurs 
 module.exports.signUpErrors = (err) =>{
-    let errors = { nom:"" , prenom : "", username :"", email: "", password : "", niveau: ""};
+    let errors = { nom:"" , username :"", email: "", password : ""};
     if(err.message.includes("nom"))
       errors.nom = "nom incorrect";
-    if(err.message.includes("prenom"))
-      errors.prenom = "prénom incorrect";
     if(err.message.includes("username"))
       errors.username = "username incorrect ou déjà pris";
     if(err.message.includes("email"))
       errors.email = "Email incorrect";
     if(err.message.includes("password"))
       errors.password = "le mot de passe doit faire 6 caractères minimum";
-    if(err.message.includes("niveau"))
-      errors.niveau = "le niveau est requis";
       
     if(err.code === 11000 && Object.keys(err.keyValue)[0].includes("username"))
       errors.username = "ce username est déjà pris";  
