@@ -1,5 +1,6 @@
 // initialisation du server et des variables d'environnement 
 const express = require("express");
+const path = require('path');
 //const path = require('path');
 const bodyParser = require("body-parser");
 const coockieParser = require("cookie-parser");
@@ -28,7 +29,8 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// parse body & cookies
+// parse body & cookies and set files 
+app.use("/public/",express.static(path.normalize(__dirname + '/public')));
 app.use(coockieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }))
